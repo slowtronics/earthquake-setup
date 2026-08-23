@@ -1,1 +1,580 @@
-he
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earthquake Tracker - User Setup Guide</title>
+<style>
+  @page {
+    size: A4;
+    margin: 12mm 15mm 15mm 15mm;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #E2E8F0;
+    background-color: #0E1013;
+    margin: 0;
+    padding: 20px;
+    font-size: 10pt;
+    line-height: 1.45;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Header Section */
+  .header-banner {
+    background: linear-gradient(135deg, #12161A 0%, #1C2A22 100%);
+    border: 2px solid #00E676;
+    border-radius: 12px;
+    padding: 18px 24px;
+    margin-bottom: 16px;
+  }
+
+  .header-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .header-title-cell {
+    vertical-align: middle;
+  }
+
+  .header-badge-cell {
+    vertical-align: middle;
+    text-align: right;
+    width: 150px;
+  }
+
+  .main-title {
+    color: #FFFFFF;
+    font-size: 20pt;
+    font-weight: 800;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    color: #00E676;
+    font-size: 10.5pt;
+    font-weight: 600;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .badge {
+    background-color: #00E676;
+    color: #06170F;
+    font-weight: bold;
+    font-size: 8.5pt;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Section Styling */
+  .section-title {
+    color: #00E676;
+    font-size: 13pt;
+    font-weight: 700;
+    border-bottom: 1px solid #2D3748;
+    padding-bottom: 4px;
+    margin-top: 18px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Steps Layout */
+  .step-card {
+    background-color: #151A17;
+    border-left: 4px solid #00E676;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+
+  .step-number {
+    color: #00E676;
+    font-size: 9.5pt;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+
+  .step-title {
+    color: #FFFFFF;
+    font-size: 11.5pt;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .step-text {
+    margin: 0 0 6px 0;
+    color: #CBD5E0;
+    font-size: 9.5pt;
+  }
+
+  /* Callout Boxes */
+  .callout-info {
+    background-color: #142019;
+    border: 1px solid #234433;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 9pt;
+  }
+
+  .callout-warning {
+    background-color: #211A0E;
+    border: 1px solid #7B611E;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 9pt;
+    color: #FFE7A8;
+  }
+
+  .callout-alert {
+    background-color: #210E10;
+    border: 1.5px solid #F81F3D;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 9pt;
+    color: #FFD0D6;
+  }
+
+  .callout-serial {
+    background-color: #10181C;
+    border: 1.5px solid #00CFFF;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 9pt;
+    color: #CFF6FF;
+  }
+
+  .callout-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #00E676;
+  }
+
+  /* Simulated UI Elements */
+  .screen-mockup {
+    background-color: #000000;
+    border: 3px solid #333333;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 8px 0;
+    text-align: center;
+  }
+
+  .tft-display {
+    width: 240px;
+    height: 135px;
+    background-color: #0b1220;
+    border: 2px solid #00E676;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Courier New", Courier, monospace;
+    position: relative;
+    text-align: left;
+    overflow: hidden;
+  }
+
+  .portal-mockup {
+    background-color: #121212;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    padding: 12px;
+    max-width: 320px;
+    margin: 6px auto;
+    font-family: Arial, sans-serif;
+  }
+
+  .portal-header {
+    color: #00E676;
+    font-size: 13pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .portal-label {
+    color: #80D8FF;
+    font-size: 7.5pt;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 6px;
+    display: block;
+  }
+
+  .portal-input {
+    width: 100%;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 5px 7px;
+    font-size: 8pt;
+    border-radius: 4px;
+    margin-top: 2px;
+    box-sizing: border-box;
+  }
+
+  .portal-btn {
+    background-color: #00E676;
+    color: #06170F;
+    font-weight: bold;
+    text-align: center;
+    padding: 7px;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 8.5pt;
+  }
+
+  .two-col {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 6px;
+  }
+
+  .two-col td {
+    vertical-align: top;
+    padding: 0 6px;
+  }
+
+  .two-col td:first-child {
+    padding-left: 0;
+  }
+
+  .two-col td:last-child {
+    padding-right: 0;
+  }
+
+  .level-row {
+    display: table;
+    width: 100%;
+    margin-bottom: 4px;
+    font-size: 8.5pt;
+  }
+  .level-swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  ul, ol {
+    margin: 4px 0;
+    padding-left: 18px;
+  }
+
+  li {
+    margin-bottom: 3px;
+    color: #CBD5E0;
+  }
+
+  .footer {
+    margin-top: 20px;
+    border-top: 1px solid #2D3748;
+    padding-top: 8px;
+    text-align: center;
+    font-size: 8pt;
+    color: #718096;
+  }
+
+  .highlight {
+    color: #00E676;
+    font-weight: bold;
+  }
+
+  code.inline {
+    font-family: "Courier New", Courier, monospace;
+    background: #142019;
+    color: #00E676;
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+
+  /* PRINT STYLES */
+  @media print {
+    body {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+    }
+    .header-banner {
+      background: #f8f9fa !important;
+      border-color: #00a35a !important;
+    }
+    .main-title {
+      color: #000000 !important;
+    }
+    .step-card {
+      background-color: #f8f9fa !important;
+      border-left-color: #00a35a !important;
+    }
+    .step-title {
+      color: #000000 !important;
+    }
+    .step-text, li {
+      color: #333333 !important;
+    }
+    .callout-info {
+      background-color: #f1f5f9 !important;
+      color: #1e293b !important;
+      border-color: #cbd5e1 !important;
+    }
+    .callout-warning {
+      background-color: #fff7ed !important;
+      color: #9a3412 !important;
+      border-color: #fdba74 !important;
+    }
+    .callout-alert {
+      background-color: #fff1f2 !important;
+      color: #9f1239 !important;
+      border-color: #fda4af !important;
+    }
+    .callout-serial {
+      background-color: #f0faff !important;
+      color: #075985 !important;
+      border-color: #7dd3fc !important;
+    }
+    .portal-mockup {
+      background-color: #f8f9fa !important;
+      border-color: #ccc !important;
+    }
+    .portal-label {
+      color: #0369a1 !important;
+    }
+    .portal-input {
+      background-color: #fff !important;
+      border-color: #ccc !important;
+      color: #000 !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- HEADER BANNER -->
+  <div class="header-banner">
+    <table class="header-table">
+      <tr>
+        <td class="header-title-cell">
+          <h1 class="main-title">EARTHQUAKE TRACKER</h1>
+          <p class="subtitle">ESP32 + TFT · Live USGS Feed Setup Guide</p>
+        </td>
+        <td class="header-badge-cell">
+          <span class="badge">USGS Feed</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- INTRODUCTION -->
+  <p style="font-size: 9.5pt; color: #A0AEC0; margin-bottom: 14px;">
+    Welcome to your ESP32 Earthquake Tracker! Once connected to Wi-Fi, it pulls live data straight from the USGS earthquake feed and shows the top recent quakes on its screen — with a full-screen alert if one crosses your chosen magnitude threshold. Follow these three steps to get it running.
+  </p>
+
+  <!-- STEP 1 -->
+  <div class="step-card">
+    <div class="step-number">STEP 01</div>
+    <div class="step-title">Power On & Connect to Setup Wi-Fi</div>
+    <div class="step-text">
+      Plug the device into any standard USB power source. It shows a brief "SLOWTRONICS · Earthquake Tracker v4" splash, then checks for a saved network.
+    </div>
+
+    <table class="two-col">
+      <tr>
+        <td style="width: 50%;">
+          <ul style="padding-left: 15px; margin-top: 4px;">
+            <li>If no network is saved yet, the screen shows <strong style="color: #00E676;">SETUP REQUIRED</strong>.</li>
+            <li>On your phone, tablet, or laptop, open <strong>Wi-Fi Settings</strong>.</li>
+            <li>Look for the network named:
+              <div style="background: #111; border: 1px solid #00E676; color: #00E676; padding: 5px 8px; font-family: monospace; border-radius: 4px; margin: 4px 0; font-weight: bold; text-align: center;">
+                Setup-EQTracker
+              </div>
+            </li>
+            <li>Connect to it. <em>(No password required)</em>.</li>
+          </ul>
+        </td>
+        <td style="width: 50%;">
+          <!-- Screen Illustration -->
+          <div class="tft-display">
+            <div style="padding: 6px;">
+              <span style="color:#07FF; font-size:8pt;">SETUP REQUIRED</span>
+              <div style="border-top:1px solid #2965; margin: 4px 0 10px 0;"></div>
+              <p style="color:#fff; font-size:7.5pt; margin: 0 0 4px 0;">1. Connect Phone/PC to:</p>
+              <p style="color:#FFE0; font-size:12pt; font-weight:bold; margin: 0 0 10px 0;">Setup-EQTracker</p>
+              <p style="color:#fff; font-size:7.5pt; margin: 0;">2. Open browser to setup</p>
+              <p style="color:#8410; font-size:7pt; margin: 2px 0 0 0;">(or visit 192.168.4.1)</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step-card">
+    <div class="step-number">STEP 02</div>
+    <div class="step-title">Configure Network & Alert Threshold</div>
+    <div class="step-text">
+      Once connected to <span class="highlight">Setup-EQTracker</span>, a setup page should pop up automatically on your phone or browser.
+    </div>
+
+    <table class="two-col">
+      <tr>
+        <td style="width: 48%;">
+          <div class="callout-info" style="margin-top: 0;">
+            <div class="callout-title">Portal didn't open automatically?</div>
+            Open your browser and go to:
+            <div style="font-family: monospace; color: #00E676; font-weight: bold; margin-top: 3px;">http://192.168.4.1</div>
+          </div>
+
+          <p style="font-size: 9pt; color: #CBD5E0;">Fill in the fields:</p>
+          <ol style="padding-left: 18px; font-size: 8.5pt; color: #CBD5E0;">
+            <li><strong>WiFi Network:</strong> Pick your home network from the drop-down (shows live dBm).</li>
+            <li><strong>WiFi Password:</strong> Enter your home Wi-Fi password.</li>
+            <li><strong>Panic Threshold (Magnitude):</strong> Any quake at or above this magnitude within the last 10 minutes triggers the full-screen alert. Defaults to <strong>4.5</strong>.</li>
+            <li>Tap <strong>Save & Connect</strong>.</li>
+          </ol>
+        </td>
+        <td style="width: 52%;">
+          <!-- Web Form Illustration -->
+          <div class="portal-mockup">
+            <div class="portal-header">Earthquake Tracker Setup</div>
+
+            <span class="portal-label">WiFi Network:</span>
+            <div class="portal-input">MyHomeNetwork_5G (-58 dBm) ▼</div>
+
+            <span class="portal-label">WiFi Password:</span>
+            <div class="portal-input">••••••••••••••</div>
+
+            <span class="portal-label">Panic Threshold (Magnitude):</span>
+            <div class="portal-input">4.5</div>
+
+            <div class="portal-btn">Save & Connect</div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step-card">
+    <div class="step-number">STEP 03</div>
+    <div class="step-title">Save & Start Tracking!</div>
+    <div class="step-text">
+      After tapping <strong>"Save & Connect"</strong>, the page confirms your settings were saved.
+    </div>
+    <p style="font-size: 9pt; color: #CBD5E0; margin-top: 2px;">
+      The device restarts, joins your home Wi-Fi, syncs the current time from the connection itself, and fetches the latest quakes from USGS. Within moments, the screen switches to the <strong>Live Dashboard</strong>.
+    </p>
+  </div>
+
+  <!-- DASHBOARD EXPLANATION -->
+  <div class="section-title">Understanding Your Dashboard</div>
+
+  <table class="two-col">
+    <tr>
+      <td style="width: 52%;">
+        <div class="screen-mockup">
+          <div class="tft-display" style="text-align:left;">
+            <div style="background:#10A2; padding:2px 4px; font-size:6.5pt; color:#07FF; display:flex; justify-content:space-between;">
+              <span>EARTHQUAKE TRACKER</span><span style="color:#8410;">USGS</span>
+            </div>
+            <div style="padding: 2px 4px; border-bottom:1px solid #2965; font-size:6.5pt; color:#fff;">
+              #1 <span style="color:#FC60; font-weight:bold; font-size:9pt;">4.8</span> <span style="color:#FC60;">MOD</span> <span style="color:#C618; float:right;">2m</span><br>
+              <span style="color:#C618;">Coast of Chile</span>
+            </div>
+            <div style="padding: 2px 4px; border-bottom:1px solid #2965; font-size:6.5pt; color:#fff;">
+              #2 <span style="color:#FFE0; font-weight:bold; font-size:9pt;">3.2</span> <span style="color:#FFE0;">LIGHT</span> <span style="color:#C618; float:right;">14m</span><br>
+              <span style="color:#C618;">Southern Alaska</span>
+            </div>
+            <div style="padding: 2px 4px; border-bottom:1px solid #2965; font-size:6.5pt; color:#fff;">
+              #3 <span style="color:#07E0; font-weight:bold; font-size:9pt;">2.6</span> <span style="color:#07E0;">MINOR</span> <span style="color:#C618; float:right;">41m</span><br>
+              <span style="color:#C618;">Central Turkey</span>
+            </div>
+            <div style="background:#10A2; padding:1px 4px; font-size:6pt; color:#07FF;">RECENT</div>
+          </div>
+        </div>
+      </td>
+      <td style="width: 48%;">
+        <ul style="font-size: 8.5pt; padding-left: 15px; margin-top: 0;">
+          <li><strong style="color: #FFF;">TOP 3 CARDS:</strong> The three highest-magnitude quakes currently in range, ranked #1–#3.</li>
+          <li><strong style="color: #FC60;">MAGNITUDE & LABEL:</strong> Color-coded — green MINOR, yellow LIGHT, orange MOD, red STRONG/MAJOR.</li>
+          <li><strong style="color: #C618;">PLACE & TIME AGO:</strong> Location (trimmed of "X km of") and how long ago it happened.</li>
+          <li><strong style="color: #07FF;">RECENT LOG:</strong> Bottom strip lists the 3 most recently reported quakes, refreshed on every fetch.</li>
+          <li><strong style="color: #00E676;">STATUS DOT:</strong> Blinks in the header as a heartbeat that the tracker is alive and looping.</li>
+        </ul>
+
+        <div style="margin-top: 10px;">
+          <div class="level-row"><span class="level-swatch" style="background:#00CC44;"></span>MINOR — below M2.5</div>
+          <div class="level-row"><span class="level-swatch" style="background:#FFD400;"></span>LIGHT — M2.5 to M3.9</div>
+          <div class="level-row"><span class="level-swatch" style="background:#FF8A00;"></span>MOD — M4.0 to M5.4</div>
+          <div class="level-row"><span class="level-swatch" style="background:#FF3B30;"></span>STRONG / MAJOR — M5.5 and up</div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <!-- PANIC MODE -->
+  <div class="section-title">Full-Screen Alert Mode</div>
+
+  <div class="callout-alert">
+    <div style="color: #F81F3D; font-weight: bold; font-size: 10pt; margin-bottom: 4px;">
+      When a Quake Crosses Your Threshold
+    </div>
+    If any quake at or above your <strong>Panic Threshold</strong> happened in the last 10 minutes, the whole screen flips into a flashing red/magenta alert showing the magnitude, place, depth, and how long ago it struck. This:
+    <ul style="margin-top: 6px; padding-left: 20px; color: #FFD0D6; font-size: 8.5pt;">
+      <li>Alternates between the alert screen and the normal dashboard every few seconds so you can still see the rest of the data.</li>
+      <li>Automatically clears itself after 5 minutes even if the quake is still "recent."</li>
+      <li>Always tells you to check official sources — it's a heads-up, not a substitute for official alerts.</li>
+    </ul>
+  </div>
+
+  <!-- TROUBLESHOOTING & RESET -->
+  <div class="section-title">Troubleshooting & Testing</div>
+
+  <div class="callout-warning">
+    <div class="callout-title">Wrong Network or Moved Locations?</div>
+    If the saved Wi-Fi network can't be reached after about 12 seconds of trying, the device automatically falls back into <strong>SETUP REQUIRED</strong> mode and starts broadcasting <strong>Setup-EQTracker</strong> again — just reconnect and repeat Step 2 with the new details.
+  </div>
+
+  <div class="callout-serial">
+    <div style="color: #00CFFF; font-weight: bold; font-size: 10pt; margin-bottom: 4px;">
+      Test the Alert Without Waiting for a Real Quake
+    </div>
+    With the device connected to your computer over USB:
+    <ol style="margin-top: 6px; padding-left: 20px; color: #CFF6FF; font-size: 8.5pt;">
+      <li>Open a Serial Monitor at <strong>115200 baud</strong>.</li>
+      <li>Send <code class="inline">1</code> to inject a simulated M6.5 quake and trigger the full alert screen.</li>
+      <li>Send <code class="inline">0</code> to cancel the simulation and return to the normal dashboard.</li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    Earthquake Tracker v4 • User Setup Guide • Live USGS Feed Edition
+  </div>
+</div>
+
+</body>
+</html>
